@@ -2,12 +2,16 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { UserMenu } from './components/UserMenu'
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(false) // For demo, set to true
 
   useEffect(() => {
     setIsVisible(true)
+    // In a real app, you'd check auth status here
+    setIsAuthenticated(true)
   }, [])
 
   return (
@@ -28,19 +32,25 @@ export default function Home() {
             <span className="text-2xl font-bold">MoodFlow</span>
           </div>
           
-          <div className="flex gap-4">
-            <Link 
-              href="/login"
-              className="px-6 py-2 rounded-lg bg-black/20 backdrop-blur-sm border border-white/10 hover:bg-white/5 transition-all"
-            >
-              Log in
-            </Link>
-            <Link 
-              href="/signup"
-              className="px-6 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 transition-all"
-            >
-              Sign up
-            </Link>
+          <div className="flex items-center gap-4">
+            {isAuthenticated ? (
+              <UserMenu />
+            ) : (
+              <>
+                <Link 
+                  href="/login"
+                  className="px-6 py-2 rounded-lg bg-black/20 backdrop-blur-sm border border-white/10 hover:bg-white/5 transition-all"
+                >
+                  Log in
+                </Link>
+                <Link 
+                  href="/signup"
+                  className="px-6 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 transition-all"
+                >
+                  Sign up
+                </Link>
+              </>
+            )}
           </div>
         </nav>
 
