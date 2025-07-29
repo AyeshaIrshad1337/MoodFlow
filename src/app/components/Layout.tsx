@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { UserMenu } from './UserMenu'
+import { MiniPlayer } from './MiniPlayer'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -10,7 +11,7 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white pb-20">
       {/* Header */}
       <header className="border-b border-white/10">
         <div className="max-w-6xl mx-auto px-6 py-4">
@@ -48,6 +49,9 @@ export function Layout({ children }: LayoutProps) {
       <main>
         {children}
       </main>
+
+      {/* Mini Player */}
+      <MiniPlayer />
     </div>
   )
 }
