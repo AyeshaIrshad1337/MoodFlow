@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { Layout } from '../components/Layout'
 
 export default function PlayerPage() {
   const router = useRouter()
@@ -100,24 +101,7 @@ export default function PlayerPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white">
-      {/* Top Navigation */}
-      <div className="px-6 py-4 border-b border-white/10">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Link 
-              href="/mood-selector"
-              className="p-2 rounded-lg bg-black/20 backdrop-blur-sm border border-white/10 hover:bg-white/5 transition-colors flex items-center gap-2"
-            >
-              ← Back to Moods
-            </Link>
-            <h1 className="text-xl font-bold capitalize">{mood} Journey</h1>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-violet-500 rounded-lg"></div>
-          </div>
-        </div>
-      </div>
+    <Layout>
 
       <div className="max-w-4xl mx-auto px-6 py-8">
         {/* Now Playing */}
@@ -271,6 +255,6 @@ export default function PlayerPage() {
           </button>
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }

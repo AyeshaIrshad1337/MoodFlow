@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import Link from 'next/link'
+import { Layout } from '@/app/components/Layout'
 
 export default function JourneyDetailPage() {
   const router = useRouter()
@@ -136,29 +137,9 @@ export default function JourneyDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white">
+    <Layout>
       <div className="max-w-4xl mx-auto px-6 py-8">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-3">
-            <button 
-              onClick={() => router.push('/journeys')}
-              className="p-2 rounded-lg bg-black/20 backdrop-blur-sm border border-white/10 hover:bg-white/5 transition-colors"
-            >
-              ← Back
-            </button>
-            <h1 className="text-2xl font-bold">Journey Details</h1>
-          </div>
-          
-          <div className={`px-4 py-2 rounded-full text-sm font-medium ${
-            journey.completed 
-              ? 'bg-green-500/20 text-green-400 border border-green-500/30' 
-              : 'bg-yellow-500/20 text-yellow-400 border border-yellow-500/30'
-          }`}>
-            {journey.completed ? 'Completed' : 'In Progress'}
-          </div>
-        </div>
-
+        
         {/* Journey Info */}
         <div className="bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 mb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
@@ -281,6 +262,6 @@ export default function JourneyDetailPage() {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }

@@ -66,3 +66,35 @@ export interface UserFavorites {
   favoriteSongs: FavoriteSong[]
   playlists: Playlist[]
 }
+export interface EmotionTrend {
+  date: string // ISO string
+  emotions: {
+    [emotion: string]: number
+  }
+}
+
+export interface ListeningHabits {
+  totalTime: number // in seconds
+  songsPlayed: number
+  favoriteTimeOfDay: string
+  favoriteDayOfWeek: string
+  moodDistribution: {
+    [mood: string]: number
+  }
+}
+
+export interface UserInsights {
+  emotionTrends: EmotionTrend[]
+  listeningHabits: ListeningHabits
+  favoriteArtists: string[]
+  favoriteGenres: string[]
+  moodCorrelations: {
+    mood: string
+    correlatedEmotions: string[]
+  }[]
+  weeklySummary: {
+    week: string
+    totalJourneys: number
+    totalTime: number
+  }[]
+}

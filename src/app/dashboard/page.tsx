@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { Layout } from '../components/Layout'
 
 export default function DashboardPage() {
   const router = useRouter()
@@ -63,33 +64,9 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white">
+    <Layout>
       <div className="max-w-6xl mx-auto px-6 py-8">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-12">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-violet-500 rounded-xl flex items-center justify-center">
-              <span className="text-xl">🎵</span>
-            </div>
-            <h1 className="text-2xl font-bold">MoodFlow</h1>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <Link 
-              href="/mood-selector"
-              className="px-4 py-2 bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 rounded-lg transition-all"
-            >
-              Start New Journey
-            </Link>
-            <button 
-              onClick={handleLogout}
-              className="px-4 py-2 bg-black/20 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/5 transition-colors"
-            >
-              Logout
-            </button>
-          </div>
-        </div>
-
+       
         {/* Welcome Section */}
         <div className="mb-12">
           <h1 className="text-4xl font-bold mb-2">Welcome back, {user.name.split(' ')[0]}!</h1>
@@ -174,11 +151,14 @@ export default function DashboardPage() {
 
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all cursor-pointer">
-            <div className="text-2xl mb-3">📊</div>
-            <h3 className="font-bold text-lg mb-2">View Insights</h3>
-            <p className="text-gray-400 text-sm">See your emotional patterns over time</p>
-          </div>
+          <Link 
+              href="/analytics"
+              className="bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all cursor-pointer block"
+            >
+              <div className="text-2xl mb-3">📊</div>
+              <h3 className="font-bold text-lg mb-2">View Insights</h3>
+              <p className="text-gray-400 text-sm">See your emotional patterns over time</p>
+            </Link>
           
           <div className="bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-white/20 transition-all cursor-pointer">
             <div className="text-2xl mb-3">⚙️</div>
@@ -193,6 +173,6 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }

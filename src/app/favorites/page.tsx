@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { FavoritesService } from '../lib/favorites-service'
 import { FavoriteSong, Playlist } from '../types/journey'
+import { Layout } from '../components/Layout'
 
 export default function FavoritesPage() {
   const router = useRouter()
@@ -56,27 +57,9 @@ export default function FavoritesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white">
+    <Layout>
       <div className="max-w-6xl mx-auto px-6 py-8">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-12">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-violet-500 rounded-xl flex items-center justify-center">
-              <span className="text-xl">🎵</span>
-            </div>
-            <h1 className="text-2xl font-bold">MoodFlow</h1>
-          </div>
-          
-          <div className="flex gap-3">
-            <Link 
-              href="/dashboard"
-              className="px-4 py-2 bg-black/20 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/5 transition-colors"
-            >
-              Dashboard
-            </Link>
-          </div>
-        </div>
-
+        
         {/* Page Title */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">Favorites</h1>
@@ -217,6 +200,6 @@ export default function FavoritesPage() {
           </div>
         )}
       </div>
-    </div>
+    </Layout>
   )
 }

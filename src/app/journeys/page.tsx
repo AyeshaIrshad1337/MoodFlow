@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { JourneyService } from '../lib/journey-service'
 import { Journey } from '../types/journey'
+import { Layout } from '../components/Layout'
 
 export default function JourneysPage() {
   const router = useRouter()
@@ -53,33 +54,9 @@ export default function JourneysPage() {
   const moodFilters = ['all', 'calm', 'energetic', 'happy', 'reflective', 'focused', 'romantic']
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white">
+    <Layout>
       <div className="max-w-6xl mx-auto px-6 py-8">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-12">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-violet-500 rounded-xl flex items-center justify-center">
-              <span className="text-xl">🎵</span>
-            </div>
-            <h1 className="text-2xl font-bold">MoodFlow</h1>
-          </div>
-          
-          <div className="flex gap-3">
-            <Link 
-              href="/dashboard"
-              className="px-4 py-2 bg-black/20 backdrop-blur-sm rounded-lg border border-white/10 hover:bg-white/5 transition-colors"
-            >
-              Dashboard
-            </Link>
-            <Link 
-              href="/mood-selector"
-              className="px-4 py-2 bg-gradient-to-r from-purple-600 to-violet-600 hover:from-purple-500 hover:to-violet-500 rounded-lg transition-all"
-            >
-              New Journey
-            </Link>
-          </div>
-        </div>
-
+       
         {/* Page Title */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold mb-2">My Journeys</h1>
@@ -177,6 +154,6 @@ export default function JourneysPage() {
           </div>
         )}
       </div>
-    </div>
+    </Layout>
   )
 }
