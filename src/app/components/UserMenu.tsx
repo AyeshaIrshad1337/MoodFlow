@@ -57,6 +57,13 @@ export function UserMenu() {
               >
                 My Journeys
               </Link>
+              <Link 
+                href="/favorites"
+                className="block px-4 py-2 text-sm hover:bg-white/5"
+                onClick={() => setIsOpen(false)}
+              >
+                Favorites
+              </Link>
             </div>
             
             <div className="border-t border-white/10 py-2">
